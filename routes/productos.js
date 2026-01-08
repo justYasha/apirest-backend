@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+// Importa la base de datos si es necesario
+const db = require('../db/database');
 router.get('/', (req, res) => {
     res.send('Lista de productos');
 });
