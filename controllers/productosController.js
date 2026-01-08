@@ -1,13 +1,11 @@
-const db = require('../db/database');
+const Producto = require('../models/producto');
 
-exports.getAllProducts = (req, res) => {
-    db.all('SELECT * FROM productos', [], (err, rows) => {
+exports.getAllProductos = (req, res) => {
+    Producto.getAll((err, productos) => {
         if (err) {
-            res.status(500).send('Error al obtener productos');
-            return;
+            res.status(500).json({ error: err.message });
+        } else {
+            res.json(productos);
         }
-        console.log("Resultados de la consulta:");
-        console.dir(rows, { depth: null });
-        res.json(rows);
     });
 };
