@@ -26,6 +26,12 @@ exports.getProductoById = (req, res) => {
 
 exports.createProducto = (req, res) => {
     const nuevoProducto = req.body;
-    const { nombre, descripcion } = nuevoProducto;
-    res.json({ nombre, descripcion });
+   
+    Producto.create(nuevoProducto, (err, productoCreado) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+        } else {
+            res.status(201).json(productoCreado);
+        }
+    });
 };
