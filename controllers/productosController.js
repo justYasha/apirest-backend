@@ -9,3 +9,17 @@ exports.getAllProductos = (req, res) => {
         }
     });
 };
+
+exports.getProductoById = (req, res) => {
+    const id = req.params.id;
+
+    Producto.getById(id, (err, producto) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+        } else if (!producto) {
+            res.status(404).json({ message: 'Producto no encontrado' });
+        } else {
+            res.json(producto);
+        }
+    });
+};
