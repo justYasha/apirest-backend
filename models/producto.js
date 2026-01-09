@@ -17,6 +17,14 @@ class Producto {
             callback(null, nuevoProducto);
         });
     }
+    static deleteById(id, callback){
+        db.run("DELETE FROM productos WHERE id = ?", [id], function(err) {
+            if (err) {
+                return callback(err);
+            }
+            callback(null, { deletedID: id });
+        });
+    }
 }
 
 module.exports = Producto;

@@ -35,3 +35,17 @@ exports.createProducto = (req, res) => {
         }
     });
 };
+
+exports.deleteProducto = (req, res) => {
+    // Borrado para ID desde URL
+    //const id = req.params.id;
+    const id = req.body.id;
+   // res.json({ message: `Producto con id ${id} eliminado (simulado)` });
+    Producto.deleteById(id, (err, result) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+        } else {
+            res.json({ message: `Producto con id ${id} eliminado`});
+        }
+    });
+};
