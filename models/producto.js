@@ -25,6 +25,18 @@ class Producto {
             callback(null, { deletedID: id });
         });
     }
+    static updateById(id, productoActualizado, callback){
+        const { nombre, descripcion } = productoActualizado;
+        db.run("UPDATE productos SET nombre = ?, descripcion = ? WHERE id = ?", [nombre, descripcion, id], function(err) {
+            if (err) {
+                return callback(err);
+            }
+            if (this.changes === 0) {
+                return callback(new Error('Producto no encontrado'));
+            }
+            callback(null, { message: 'Producto actualizado' });
+        });
+    }
 }
 
 module.exports = Producto;

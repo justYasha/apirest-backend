@@ -1,3 +1,4 @@
+const e = require('express');
 const Producto = require('../models/producto');
 
 exports.getAllProductos = (req, res) => {
@@ -49,3 +50,21 @@ exports.deleteProducto = (req, res) => {
         }
     });
 };
+
+exports.updateProducto = (req, res) => {
+    const id = req.params.id;
+    const productoActualizado = req.body;
+
+    // Aquí deberías implementar la lógica para actualizar el producto en la base de datos.
+    //res.json({ message: `Producto con id ${id} actualizado (simulado)`, 
+    //    producto: productoActualizado 
+    //});
+
+    Producto.updateById(id, productoActualizado, (err, result) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+        } else {
+            res.json(result);
+        }
+    });
+}

@@ -11,4 +11,7 @@ router.post('/', productosController.createProducto);
 //router.delete('/:id', productosController.deleteProducto);
 // Si el borrado es por body
 router.delete('/', productosController.deleteProducto);
+
+router.put('/:id', productosController.updateProducto);
+
 module.exports = router;
