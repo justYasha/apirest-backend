@@ -21,27 +21,49 @@ La API implementa operaciones CRUD para la gestión de productos, siguiendo una 
 
 ## 📂 Estructura del proyecto
 
-apirest-controllers/
+apirest
 │
+
 ├── controllers/
+
 │ └── productosController.js
+
 │
+
 ├── db/
+
 │ └── database.js
+
 │
+
+
 ├── models/
+
 │ └── producto.js
+
 │
+
 ├── routes/
+
 │ └── productos.js
+
 │
+
 ├── database.sqlite
+
 ├── createTable.js
+
 ├── index.js
+
 ├── package.json
+
+
 ├── package-lock.json
+
 ├── test.js
+
 ├── .gitignore
+
 └── node_modules/
 
 
